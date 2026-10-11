@@ -79,3 +79,13 @@ Demo thành công sẽ tạo session và chuyển sang `/feed`. Đăng xuất gi
 
 - **Tiêu chí chấm điểm:** Nhập dữ liệu sai để kiểm tra các thông báo validation của từng nhóm, gồm nội dung không vượt quá 20 ký tự và số điện thoại không đúng định dạng Việt Nam. Các nhóm trình bày kết quả kiểm tra và thông báo lỗi trên form.
 
+## Triển khai của Nhóm 8
+
+- **Đường dẫn truy cập:** `http://localhost:3000/feedback` (hoặc bấm nút **"📝 Góp ý khách hàng (Bài tập)"** tại thanh Header trang `/feed` hoặc liên kết dưới form `/login`, `/register`).
+
+### Hướng dẫn kiểm tra & demo:
+Trên trang `/feedback`, nhóm đã tích hợp sẵn thanh nút **"🧪 Thử nhanh tiêu chí chấm điểm"**:
+1. **Test 1 (Nội dung ≤ 20 ký tự):** Bấm nút `Test 1: Nội dung ≤ 20 ký tự` -> Bấm gửi -> Form báo lỗi: *"Nội dung góp ý phải trên 20 ký tự (tối thiểu 21 ký tự)."* cùng bộ đếm ký tự màu đỏ.
+2. **Test 2 (Số điện thoại sai định dạng VN):** Bấm nút `Test 2: SĐT sai định dạng VN` -> Bấm gửi -> Form báo lỗi: *"Số điện thoại không đúng định dạng Việt Nam (ví dụ: 0912345678 hoặc +84912345678)."* cùng nhãn cảnh báo `✕ Chưa đúng chuẩn VN`.
+3. **Test 3 (Dữ liệu hợp lệ):** Bấm nút `Test 3: Dữ liệu hợp lệ chuẩn` -> Bấm gửi -> Hiển thị thông báo thành công, xóa trắng ô nhập và ngay lập tức thêm góp ý vào danh sách bên dưới.
+

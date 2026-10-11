@@ -1,6 +1,6 @@
 // Run: node --env-file=.env.local scripts/setup-login-demo.cjs
-const { Pool } = require("pg");
-const bcrypt = require("bcryptjs");
+import { Pool } from "pg";
+import bcrypt from "bcryptjs";
 
 async function main() {
   if (process.env.NODE_ENV === "production") {
@@ -21,8 +21,16 @@ async function main() {
       password_plain TEXT NOT NULL
     )`);
     const accounts = [
-      { email: "demo_a@example.com", username: "sql_demo_a", password: "DemoA@123" },
-      { email: "demo_b@example.com", username: "sql_demo_b", password: "DemoB@456" },
+      {
+        email: "demo_a@example.com",
+        username: "sql_demo_a",
+        password: "DemoA@123",
+      },
+      {
+        email: "demo_b@example.com",
+        username: "sql_demo_b",
+        password: "DemoB@456",
+      },
     ];
     for (const account of accounts) {
       const existing = await client.query(
@@ -30,12 +38,18 @@ async function main() {
         [account.email],
       );
       if (existing.rows[0] && existing.rows[0].username !== account.username) {
-        throw new Error("Demo email belongs to another profile: " + account.email);
+        throw new Error(
+          "Demo email belongs to another profile: " + account.email,
+        );
       }
       await client.query(
         `INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3)
          ON CONFLICT (email) DO NOTHING`,
-        [account.username, account.email, await bcrypt.hash(account.password, 12)],
+        [
+          account.username,
+          account.email,
+          await bcrypt.hash(account.password, 12),
+        ],
       );
       await client.query(
         `INSERT INTO demo_login_users (email, password_plain) VALUES ($1, $2)

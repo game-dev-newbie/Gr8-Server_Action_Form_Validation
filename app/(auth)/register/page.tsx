@@ -18,6 +18,9 @@ export default function RegisterPage() {
       <p className="auth-switch">
         Đã có tài khoản? <Link href="/login">Đăng nhập</Link>
       </p>
+      <p className="auth-switch" style={{ marginTop: "0.75rem", paddingTop: "0.75rem" }}>
+        📝 <Link href="/feedback">Xem bài tập: Form Góp ý khách hàng</Link>
+      </p>
     </>
   );
 }
